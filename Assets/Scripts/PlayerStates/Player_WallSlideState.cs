@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_WallSlideState : EntityState
+public class Player_WallSlideState : PlayerState
 {
     // TODO: 
     // 滑墙状态需按方向键进入, 如墙在右侧, 需按右键
