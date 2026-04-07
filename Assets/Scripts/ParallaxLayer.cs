@@ -30,7 +30,8 @@ public class ParallaxLayer
         if (imageRightEdge < cameraLeftEdge)
         {
             background.position += Vector3.right * imageFullWidth;
-        }else if (imageLeftEdge > cameraRightEdge)
+        }
+        else if (imageLeftEdge > cameraRightEdge)
         {
             background.position += Vector3.right * (-imageFullWidth);
         }
