@@ -13,7 +13,7 @@ public class Chest : MonoBehaviour, IDamagable
     [SerializeField] private int hitCount = 0;
     [SerializeField] private int hitCountLimit = 5;
 
-    public void TakeDamage(float damage, Transform damageDealer)
+    public bool TakeDamage(float damage, Transform damageDealer)
     {
         fx.PlayOnDamageVfx();
         animator.SetBool("open", true);
@@ -25,5 +25,7 @@ public class Chest : MonoBehaviour, IDamagable
             animator.SetBool("broken", true);
             GetComponent<Collider2D>().enabled = false;
         }
+
+        return true;
     }
 }
