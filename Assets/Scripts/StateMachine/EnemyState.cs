@@ -9,6 +9,7 @@ public abstract class EnemyState : EntityState
         this.enemy = enemy;
         this.rb = enemy.rb;
         this.animator = enemy.animator;
+        this.stats = enemy.stats;
     }
 
     public override void Update()

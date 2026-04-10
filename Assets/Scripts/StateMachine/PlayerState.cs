@@ -11,6 +11,7 @@ public abstract class PlayerState : EntityState
         this.animator = player.animator;
         this.rb = player.rb;
         this.input = player.input;
+        this.stats = player.stats;
     }
 
     public override void Update()

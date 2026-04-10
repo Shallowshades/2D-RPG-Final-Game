@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
 
     public Rigidbody2D rb { get; private set; }
     public Animator animator { get; private set; }
+    public Entity_Stats stats { get; private set; }
     protected StateMachine stateMachine;
 
     private bool facingRight = true;
@@ -26,12 +27,14 @@ public class Entity : MonoBehaviour
     //Condition variables
     private bool isKnocked;
     private Coroutine knockbackCoroutine;
+    private Coroutine slowDownCoroutine;
 
     protected virtual void Awake()
     {
         // 确保优先获取组件
-        rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        stats = GetComponent<Entity_Stats>();
 
         // 其次再构造字段
         stateMachine = new StateMachine();
@@ -56,6 +59,21 @@ public class Entity : MonoBehaviour
     public virtual void EntityDeath()
     {
 
+    }
+
+    public virtual void SlowDownEntity(float duration, float slowMultiplier)
+    {
+        if (slowDownCoroutine != null)
+        {
+            StopCoroutine(slowDownCoroutine);
+        }
+
+        slowDownCoroutine = StartCoroutine(SlowDownEntityCoroutine(duration, slowMultiplier));
+    }
+
+    protected virtual IEnumerator SlowDownEntityCoroutine(float duration, float slowMultiplier)
+    {
+        yield return null;
     }
 
     public void ReciveKnockback(Vector2 knockback, float duration)

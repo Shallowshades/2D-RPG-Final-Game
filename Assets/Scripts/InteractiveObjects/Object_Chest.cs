@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Chest : MonoBehaviour, IDamagable
+public class Object_Chest : MonoBehaviour, IDamagable
 {
     private Rigidbody2D rb => GetComponentInChildren<Rigidbody2D>();
     private Animator animator => GetComponentInChildren<Animator>();
@@ -13,7 +13,7 @@ public class Chest : MonoBehaviour, IDamagable
     [SerializeField] private int hitCount = 0;
     [SerializeField] private int hitCountLimit = 5;
 
-    public bool TakeDamage(float damage, Transform damageDealer)
+    public bool TakeDamage(float damage, float elementalDamage, ElementType element, Transform damageDealer)
     {
         fx.PlayOnDamageVfx();
         animator.SetBool("open", true);

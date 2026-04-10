@@ -3,6 +3,9 @@ using System;
 [Serializable]
 public class Stats_OffenseGroup
 {
+    // 攻击速度
+    public Stats attackSpeed;
+
     // 物理伤害
     public Stats damage;
     public Stats critPower;

@@ -21,7 +21,10 @@ public class Player_BasicAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        comboAttackQueued = false;
         ResetComboIndexIfNeeded();
+        SyncAttackSpeed(); 
+
         attackDir = player.moveInput.x != 0 ? (int)player.moveInput.x : player.facingDir;
 
         animator.SetInteger("basicAttackIndex", comboIndex);
