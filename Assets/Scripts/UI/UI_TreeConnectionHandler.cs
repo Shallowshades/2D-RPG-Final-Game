@@ -41,7 +41,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
             return;
         }
 
-        UpdateAllConnections();
+        // UpdateAllConnections();
     }
 
     private void UpdateConnections()
@@ -58,8 +58,9 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
             if (detail.childNode == null) continue;
 
-            detail.childNode.SetPosition(targetPosition);    
-            detail.childNode.SetConnectionImage(connectionImage);        
+            detail.childNode?.SetPosition(targetPosition);
+            detail.childNode?.SetConnectionImage(connectionImage);
+            // detail.childNode?.transform.SetAsLastSibling();
         }
     }
 

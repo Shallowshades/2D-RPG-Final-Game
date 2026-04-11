@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Entity_VFX : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     private Entity entity;
 
     [Header("On Damage VFX")]

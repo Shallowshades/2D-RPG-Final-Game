@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6e65459fa07164ca427a6f105895e1, type: 3}
+  m_Name: Skill data - Deja Vu
+  m_EditorClassIdentifier: 
+  cost: 3
+  skillType: 0
+  upgradeData:
+    upgradeType: 4
+    cooldown: 3
+  displayName: Deja Vu
+  description: Create a time echo on arrival.(Inherits all upgrades of Time echo
+    Ability)
+  icon: {fileID: -655033057, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
