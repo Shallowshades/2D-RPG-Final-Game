@@ -20,7 +20,7 @@ public class Entity_VFX : MonoBehaviour
     [Header("Element Colors")]
     [SerializeField] private Color chillVfx = Color.cyan;
     [SerializeField] private Color burnVfx = Color.red;
-    [SerializeField] private Color electrifyVfx = Color.yellow;
+    [SerializeField] private Color shockVfx = Color.yellow;
     private Color originalHitVfxColor;
     private Coroutine statusVfxCoroutine;
 
@@ -46,7 +46,7 @@ public class Entity_VFX : MonoBehaviour
 
         if (element == ElementType.Lightning)
         {
-            StartCoroutine(PlayStatusVfxCoroutine(duration, electrifyVfx));
+            StartCoroutine(PlayStatusVfxCoroutine(duration, shockVfx));
         }
     }
 
@@ -80,12 +80,13 @@ public class Entity_VFX : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-    public void CreateOnHitVFX(Transform target, bool isCrit)
+    public void CreateOnHitVFX(Transform target, bool isCrit, ElementType elementType)
     {
         GameObject hitPrefab = isCrit ? critHitVFX : hitVFX;
         GameObject vfx = Instantiate(hitPrefab, target.position, Quaternion.identity);
         
-        vfx.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor;
+        // 有状态效果的情况下, 打击效果改变颜色会变得不太显眼
+        // vfx.GetComponentInChildren<SpriteRenderer>().color = GetElementColor(elementType);
 
         if (entity.facingDir == -1 && isCrit)
         {
@@ -93,17 +94,15 @@ public class Entity_VFX : MonoBehaviour
         } 
     }
 
-    public void UpdateOnHitColor(ElementType elementType)
+    public Color GetElementColor(ElementType elementType)
     {
-        if (elementType == ElementType.Ice)
+        switch(elementType)
         {
-            hitVfxColor = chillVfx;
-        }
-
-        if (elementType == ElementType.None) 
-        {
-            hitVfxColor = originalHitVfxColor;
-        }  
+            case ElementType.Ice: return chillVfx;
+            case ElementType.Fire: return burnVfx;
+            case ElementType.Lightning: return shockVfx;
+            default: return Color.white;
+        } 
     }
 
     public void PlayOnDamageVfx()

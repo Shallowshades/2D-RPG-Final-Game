@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6e65459fa07164ca427a6f105895e1, type: 3}
-  m_Name: Skill data - Replication Echo
+  m_Name: Skill data - Quick Dash
   m_EditorClassIdentifier: 
-  cost: 3
-  displayName: Replication Echo
-  description: The healing wisp reduces cooldowns ofyour other skills by 1 second.
-  icon: {fileID: -924916544, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  cost: 0
+  unlockedByDefault: 0
+  skillType: 0
+  upgradeData:
+    upgradeType: 1
+    cooldown: 3
+  displayName: Quick Dash
+  description: 'Dash to avoid attacks.
+
+    You cannot take damage while dashing.'
+  icon: {fileID: 33332870, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}

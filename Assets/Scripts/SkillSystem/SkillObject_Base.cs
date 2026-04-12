@@ -6,6 +6,10 @@ public class SkillObject_Base : MonoBehaviour
     [SerializeField] protected Transform targetCheck;
     [SerializeField] protected float checkRadius = 1;
 
+    protected Entity_Stats playerStats;
+    protected DamageScaleData damageScaleData;
+    protected ElementType usedElement;
+
     protected void DamageEnemiesInRadius(Transform transform, float radius)
     {
         foreach(var target in EnemiesAround(transform, radius))
@@ -14,8 +18,41 @@ public class SkillObject_Base : MonoBehaviour
 
             if (damagable == null) continue;
 
-            damagable.TakeDamage(1, 1, ElementType.None, transform);
+            AttackData attackData = playerStats.GetAttackData(damageScaleData);
+            Entity_StatusHandler statusHandler = target.GetComponent<Entity_StatusHandler>();
+
+            float physicalDamage = attackData.physicalDamage;
+            float elementalDamage = attackData.elementalDamage;
+            ElementType elementType = attackData.elementType;
+
+            damagable.TakeDamage(physicalDamage, elementalDamage, elementType, transform);
+        
+            if (elementType != ElementType.None)
+            {
+                statusHandler?.ApplyStatusEffect(elementType, attackData.effectData);
+            }
+
+            usedElement = elementType;
         }
+    }
+
+    protected Transform FindClosestTarget()
+    {
+        Transform target = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach(var enemy in EnemiesAround(transform, 10f))
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+
+            if (distance < closestDistance)
+            {
+                target = enemy.transform;
+                closestDistance = distance;
+            }
+        }
+
+        return target;
     }
 
     protected Collider2D[] EnemiesAround(Transform transform, float radius)

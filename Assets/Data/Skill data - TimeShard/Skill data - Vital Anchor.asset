@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6e65459fa07164ca427a6f105895e1, type: 3}
-  m_Name: Skill data - Found Fragment
+  m_Name: Skill data - Vital Anchor
   m_EditorClassIdentifier: 
   cost: 3
-  skillType: 0
+  unlockedByDefault: 0
+  skillType: 2
   upgradeData:
-    upgradeType: 2
-    cooldown: 3
-  displayName: Found Fragment
-  description: 'Create a time shard on arrival.
-
-    (Inherits all upgrades of Time
-    shard Ability)'
-  icon: {fileID: 2014224121, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+    upgradeType: 10
+    cooldown: 4
+  displayName: Vital Anchor
+  description: When you swap places with the Time Shard, your health revertsto the
+    amount you had when the Time Shard was create
+  icon: {fileID: 1966821336, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,20 +29,19 @@ public class UI_TreeConnectionHandler : MonoBehaviour
         }
     }
 
-    private void OnValidate()
+    public UI_TreeNode[] GetChildNodes()
     {
-        if (rect == null)
+        List<UI_TreeNode> childrenToReturn = new List<UI_TreeNode>();
+
+        foreach(var node in connectionDetails)
         {
-            rect = GetComponent<RectTransform>();
+            if (node.childNode != null)
+            {
+                childrenToReturn.Add(node.childNode.GetComponent<UI_TreeNode>());
+            }
         }
 
-        if (connectionDetails.Length != connections.Length)
-        {
-            Debug.Log("Amount of details should be same as amount of connections. - " + gameObject.name);
-            return;
-        }
-
-        // UpdateAllConnections();
+        return childrenToReturn.ToArray();
     }
 
     private void UpdateConnections()
@@ -60,7 +60,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
             detail.childNode?.SetPosition(targetPosition);
             detail.childNode?.SetConnectionImage(connectionImage);
-            // detail.childNode?.transform.SetAsLastSibling();
+            detail.childNode?.transform.SetAsLastSibling();
         }
     }
 
@@ -86,4 +86,20 @@ public class UI_TreeConnectionHandler : MonoBehaviour
     public void SetConnectionImage(Image image) => connectionImage = image;
 
     public void SetPosition(Vector2 position) => rect.anchoredPosition = position;
+
+    private void OnValidate()
+    {
+        if (rect == null)
+        {
+            rect = GetComponent<RectTransform>();
+        }
+
+        if (connectionDetails.Length != connections.Length)
+        {
+            Debug.Log("Amount of details should be same as amount of connections. - " + gameObject.name);
+            return;
+        }
+
+        // UpdateAllConnections();
+    }
 }
