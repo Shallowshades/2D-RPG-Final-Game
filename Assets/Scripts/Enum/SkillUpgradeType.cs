@@ -17,4 +17,10 @@ public enum SkillUpgradeType
     Shard_Multicast,
     Shard_Teleport,
     Shard_TeleportHpRewind,
+
+    // ---- Throw Sword Tree ----
+    SwordThrow,
+    SwordThrow_Spin,
+    SwordThrow_Pierce,
+    SwordThrow_Bounce
 }
