@@ -34269,6 +34269,7 @@ GameObject:
   - component: {fileID: 1856119976}
   - component: {fileID: 1856119977}
   - component: {fileID: 1856119978}
+  - component: {fileID: 1856119979}
   m_Layer: 7
   m_Name: Skill_Holder
   m_TagString: Untagged
@@ -34361,6 +34362,23 @@ MonoBehaviour:
   predictionDot: {fileID: 8139540318222714311, guid: b846cbbb33164c749938564589a9b00f, type: 3}
   numberOfDots: 20
   spaceBetweenDots: 0.05
+--- !u!114 &1856119979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856119974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40add5b7a8a561848bdc285065f38a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 1
+  upgradeType: 15
+  cooldown: 0
+  timeEchoPrefab: {fileID: 4711029299589906991, guid: 1d92420c9b2cf6546809a0d06776eb5b, type: 3}
+  timeEchoDuration: 10
 --- !u!1 &1872295046
 GameObject:
   m_ObjectHideFlags: 0
@@ -38171,7 +38189,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2205090569924594119}
   primaryWallCheck: {fileID: 6672768889333069966}
   seconderyWallCheck: {fileID: 0}
-  battleMoveSpeed: 0
+  battleMoveSpeed: 3
   attackDistance: 2
   battleTimeDuration: 5
   minRetreatDistance: 1
@@ -38180,7 +38198,7 @@ MonoBehaviour:
   stunnedVelocity: {x: 7, y: 7}
   canBeStunned: 0
   idleTime: 2
-  moveSpeed: 0
+  moveSpeed: 1.4
   moveSpeedMultiplier: 1
   whatIsPlayer:
     serializedVersion: 2

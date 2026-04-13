@@ -168,6 +168,7 @@ public class Player : Entity
 
         input.Player.SkillTreeBoard.performed += ctx => ui.ToggleSkillTreeUI();
         input.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
+        input.Player.Spell.performed += ctx => skillManager.timeEcho.TryUseSkill();
     }
 
     private void OnDisable()
