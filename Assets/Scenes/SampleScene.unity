@@ -27231,7 +27231,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006845849}
-  m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.38268346}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9181009, w: 0.39634678}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27757,8 +27757,8 @@ MonoBehaviour:
   connectionDetails:
   - childNode: {fileID: 2766578108953498081}
     direction: 6
-    length: 223
-    rotation: 0
+    length: 227
+    rotation: 1.7
   - childNode: {fileID: 2766578108505133256}
     direction: 7
     length: 225
@@ -32109,7 +32109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1919166765, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: -2130491790, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33412,7 +33412,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 223, y: 5}
+  m_SizeDelta: {x: 227, y: 5}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1707213447
 MonoBehaviour:
@@ -34375,10 +34375,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillType: 1
-  upgradeType: 15
+  upgradeType: 0
   cooldown: 0
-  timeEchoPrefab: {fileID: 4711029299589906991, guid: 1d92420c9b2cf6546809a0d06776eb5b, type: 3}
+  timeEchoPrefab: {fileID: 6481494033268421748, guid: 1d92420c9b2cf6546809a0d06776eb5b, type: 3}
   timeEchoDuration: 10
+  maxAttacks: 3
+  duplicateChance: 0.3
+  damagePercentHealed: 0.3
+  cooldownReducedInSeconds: 2
 --- !u!1 &1872295046
 GameObject:
   m_ObjectHideFlags: 0
@@ -36361,7 +36365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 321.08282, y: 19.582901}
+  m_AnchoredPosition: {x: 323.03363, y: 12.1150055}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &655516932175374046
@@ -36561,7 +36565,7 @@ MonoBehaviour:
       baseValue: 1
       modifiers: []
     damage:
-      baseValue: 40
+      baseValue: 50
       modifiers: []
     critPower:
       baseValue: 100
@@ -37480,7 +37484,7 @@ GameObject:
   - component: {fileID: 8322779657246226328}
   - component: {fileID: 2766578108423529277}
   m_Layer: 5
-  m_Name: UI_TreeNode - Replication Echo
+  m_Name: UI_TreeNode - Endless Possibility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37498,7 +37502,7 @@ GameObject:
   - component: {fileID: 8322779657365931117}
   - component: {fileID: 2766578108505133256}
   m_Layer: 5
-  m_Name: UI_TreeNode - Recovery Wisp
+  m_Name: UI_TreeNode - Cleanse Wisp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37516,7 +37520,7 @@ GameObject:
   - component: {fileID: 8322779658839031869}
   - component: {fileID: 2766578108911080600}
   m_Layer: 5
-  m_Name: UI_TreeNode - Timeless Attack Plus
+  m_Name: UI_TreeNode - Echo Barrage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37534,7 +37538,7 @@ GameObject:
   - component: {fileID: 8322779658864903492}
   - component: {fileID: 2766578108953498081}
   m_Layer: 5
-  m_Name: UI_TreeNode - Cooling Wisp
+  m_Name: UI_TreeNode - Quick Thinking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38598,7 +38602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 554656884, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: 292549476, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38628,7 +38632,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3103148247459426045, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: 1123050970, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38658,7 +38662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2130491790, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: 1919166765, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38688,7 +38692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -879321472, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: 1670580962, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38915,9 +38919,9 @@ MonoBehaviour:
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: 4898e922dc496a249945d2ed5b53c544, type: 2}
-  skillName: Replication Echo
+  skillName: Endless Possibility
   skillIcon: {fileID: 7495336000342717382}
-  skillCost: 3
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!114 &8322779657365931117
 MonoBehaviour:
@@ -38938,7 +38942,7 @@ MonoBehaviour:
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: 5f51cad54e04cb14b9fb51726bbf1ad3, type: 2}
-  skillName: Recovery Wisp
+  skillName: Cleanse Wisp
   skillIcon: {fileID: 7495336000260472883}
   skillCost: 3
   lockedColorHex: '#9F9797'
@@ -38961,9 +38965,9 @@ MonoBehaviour:
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: ff950f7a76ec54b459ad1777b88d55db, type: 2}
-  skillName: Timeless Attack Plus
+  skillName: Echo Barrage
   skillIcon: {fileID: 7495335999836210275}
-  skillCost: 3
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!114 &8322779658864903492
 MonoBehaviour:
@@ -38984,7 +38988,7 @@ MonoBehaviour:
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: 0887d0fec0a0b214ebc2064d9f40a1a9, type: 2}
-  skillName: Cooling Wisp
+  skillName: Quick Thinking
   skillIcon: {fileID: 7495335999810076954}
   skillCost: 3
   lockedColorHex: '#9F9797'

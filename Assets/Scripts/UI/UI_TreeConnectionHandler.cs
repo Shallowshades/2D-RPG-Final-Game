@@ -14,7 +14,7 @@ public class UI_TreeConnectDetails
 
 public class UI_TreeConnectionHandler : MonoBehaviour
 {
-    private RectTransform rect;
+    private RectTransform rect => GetComponent<RectTransform>();
     [SerializeField] private UI_TreeConnection[] connections;
     [SerializeField] private UI_TreeConnectDetails[] connectionDetails;
 
@@ -72,7 +72,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
         {
             if (node.childNode == null) continue;
 
-            node.childNode?.UpdateAllConnections();
+            node.childNode?.UpdateConnections();
         } 
     }
 
@@ -89,10 +89,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
     private void OnValidate()
     {
-        if (rect == null)
-        {
-            rect = GetComponent<RectTransform>();
-        }
+        if (connectionDetails.Length <= 0) return;
 
         if (connectionDetails.Length != connections.Length)
         {
@@ -100,6 +97,6 @@ public class UI_TreeConnectionHandler : MonoBehaviour
             return;
         }
 
-        // UpdateAllConnections();
+        UpdateConnections();
     }
 }

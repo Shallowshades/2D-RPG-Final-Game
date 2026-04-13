@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6e65459fa07164ca427a6f105895e1, type: 3}
-  m_Name: Skill data - Healing Wisp
+  m_Name: Skill data - Echo Barrage
   m_EditorClassIdentifier: 
-  displayName: Healing Wisp
-  description: When time echo is killed by enemy, it releases a healing wisp that
-    moves toward you and heals you on contact.
-  icon: {fileID: -2130491790, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  displayName: Echo Barrage
+  description: The echo performs a 3-hit attack.
+  icon: {fileID: 1123050970, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   cost: 2
   unlockedByDefault: 0
   skillType: 1
   upgradeData:
-    upgradeType: 19
+    upgradeType: 17
     cooldown: 0
     damageScaleData:
       physical: 1
