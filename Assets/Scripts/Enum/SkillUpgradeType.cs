@@ -38,5 +38,5 @@ public enum SkillUpgradeType
     // ------ Domain Expansion -------
     Domain_SlowingDown, // Create an area in which you slow down enemies by 90-100% . You can freely move and fight.
     Domain_EchoSpam, // You can no longer move, but you spam enemy with Time Echo ability
-    Domain_ShardSpam // You can no longer move, but you spam enemy with Time Shard ability
+    Domain_ShardSpam, // You can no longer move, but you spam enemy with Time Shard ability
 }

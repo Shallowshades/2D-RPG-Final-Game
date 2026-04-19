@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
     public int facingDir { get; private set; } = 1;
 
     [Header("Collision detection")]
-    [SerializeField] protected LayerMask whatIsGround;
+    public LayerMask whatIsGround;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private Transform groundCheck;
@@ -61,11 +61,18 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void SlowDownEntity(float duration, float slowMultiplier)
+    public virtual void SlowDownEntity(float duration, float slowMultiplier, bool canOverrideSlowEffect = false)
     {
         if (slowDownCoroutine != null)
         {
-            StopCoroutine(slowDownCoroutine);
+            if (canOverrideSlowEffect)
+            {
+                StopCoroutine(slowDownCoroutine);
+            }
+            else
+            {
+                return;
+            }
         }
 
         slowDownCoroutine = StartCoroutine(SlowDownEntityCoroutine(duration, slowMultiplier));
@@ -74,6 +81,12 @@ public class Entity : MonoBehaviour
     protected virtual IEnumerator SlowDownEntityCoroutine(float duration, float slowMultiplier)
     {
         yield return null;
+    }
+
+    // 直接赋值为null会停止协程吗
+    public virtual void StopSlowDown()
+    {
+        slowDownCoroutine = null;
     }
 
     public void ReciveKnockback(Vector2 knockback, float duration)
