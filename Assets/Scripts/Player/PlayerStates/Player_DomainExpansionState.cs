@@ -22,6 +22,7 @@ public class Player_DomainExpansionState : PlayerState
         maxDistanceToGoUp = GetAvaliableRiseDistance();
 
         player.SetVelocity(0, player.riseSpeed);
+        player.health.SetCanTakeDamage(false);
     }
 
     public override void Update()
@@ -49,10 +50,8 @@ public class Player_DomainExpansionState : PlayerState
     public override void Exit()
     {
         base.Exit();
-
-        rb.gravityScale = originalGravity;
-        isLevitating = false;
         createdDomain = false;
+        player.health.SetCanTakeDamage(true);
     }
 
     private void Levitate()

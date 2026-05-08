@@ -56,6 +56,8 @@ public abstract class PlayerState : EntityState
 
         if (stateMachine.currentState == player.dashState) return false;
 
+        if (stateMachine.currentState == player.domainExpansionState) return false;
+
         return true;
     }
 }
