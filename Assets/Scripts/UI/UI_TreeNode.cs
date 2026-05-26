@@ -16,7 +16,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public bool isLocked;
 
     [Header("Skill details")]
-    public Skill_DataSO skillData;
+    public SkillData skillData;
     [SerializeField] private string skillName;
     [SerializeField] private Image skillIcon;
     [SerializeField] private int skillCost;
