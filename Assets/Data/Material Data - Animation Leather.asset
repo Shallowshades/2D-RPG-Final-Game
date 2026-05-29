@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Animation Leather
   itemIcon: {fileID: -1589666451, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   itemType: 0
+  maxStackSize: 2
