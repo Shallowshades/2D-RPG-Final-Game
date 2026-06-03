@@ -685,12 +685,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4790006336590352378}
+  - {fileID: 1112645108}
+  - {fileID: 1411453574}
   - {fileID: 655516932134331303}
   - {fileID: 655516932589970062}
   - {fileID: 655516932675572091}
   - {fileID: 655516932175374046}
-  - {fileID: 1112645108}
-  - {fileID: 1411453574}
   m_Father: {fileID: 843978930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4533,7 +4533,7 @@ GameObject:
   - component: {fileID: 384761342}
   - component: {fileID: 384761344}
   m_Layer: 9
-  m_Name: Object_ItemPickup - Animation Leather
+  m_Name: Object_ItemPickup - Wooden Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4598,7 +4598,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1589666451, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: -262365258, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4621,7 +4621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6ca1f43838bd24bac8a65857a2d728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 931d08c80f3be3b458223e392e59bc3f, type: 2}
+  itemData: {fileID: 11400000, guid: 5bef7f8e45ef45845a86f0615b107175, type: 2}
 --- !u!61 &384761344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6960,10 +6960,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 872484929}
-  - {fileID: 1872394845}
   - {fileID: 198260158}
   - {fileID: 328447409}
   - {fileID: 157561246}
+  - {fileID: 1872394845}
   m_Father: {fileID: 843978930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -33660,11 +33660,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291397356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bacfd4f8d08f7c44bd6e3b111c0ec60, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c23e029c01541c4cbb207574395e82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 10
   itemList: []
+  equipList:
+  - slotType: 1
+    equippedItem:
+      itemData: {fileID: 0}
+      stackSize: 0
+  - slotType: 2
+    equippedItem:
+      itemData: {fileID: 0}
+      stackSize: 0
+  - slotType: 3
+    equippedItem:
+      itemData: {fileID: 0}
+      stackSize: 0
 --- !u!1 &1296433457
 GameObject:
   m_ObjectHideFlags: 0
@@ -43275,10 +43288,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 670251047}
+  - {fileID: 257108622}
+  - {fileID: 1619171827}
   - {fileID: 1708786875}
   - {fileID: 773455979}
-  - {fileID: 1619171827}
-  - {fileID: 257108622}
   m_Father: {fileID: 843978930}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
