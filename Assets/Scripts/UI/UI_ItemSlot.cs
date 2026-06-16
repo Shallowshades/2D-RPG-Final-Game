@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler
 {
     public Inventory_Item itemInSlot { get; private set; }
-    private Inventory_Player playerInventory;
+    protected Inventory_Player playerInventory;
 
     [Header("UI Slot Setup")]
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemStackSize;
 
-    private void Awake()
+    protected void Awake()
     {
         playerInventory = FindAnyObjectByType<Inventory_Player>();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         if (itemInSlot == null) return;
 
