@@ -17,7 +17,7 @@ MonoBehaviour:
   itemType: 1
   maxStackSize: 1
   modifiers:
-  - statType: 7
+  - statsType: 2
     value: 4
-  - statType: 3
+  - statsType: 3
     value: 2

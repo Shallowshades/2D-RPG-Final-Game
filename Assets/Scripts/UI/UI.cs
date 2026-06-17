@@ -3,11 +3,13 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     public UI_SkillToolTip skillToolTip;
+    public UI_ItemToolTip itemToolTip;
     public UI_SkillTree skillTree;
     private bool skillTreeEnabled;
 
     private void Awake()
     {
+        itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
         skillToolTip = GetComponentInChildren<UI_SkillToolTip>();
         skillTree = GetComponentInChildren<UI_SkillTree>(true);
     }
@@ -17,5 +19,6 @@ public class UI : MonoBehaviour
         skillTreeEnabled = !skillTreeEnabled;
         skillTree.gameObject.SetActive(skillTreeEnabled);
         skillToolTip.ShowToolTip(false, null);
+        itemToolTip.ShowToolTip(false, null);
     }
 }
