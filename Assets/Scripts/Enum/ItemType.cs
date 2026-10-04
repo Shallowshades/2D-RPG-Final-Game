@@ -5,5 +5,6 @@ public enum ItemType
     Material,
     Weapon,
     Armor,
-    Trinket // rings, amulets, belt
+    Trinket, // rings, amulets, belt
+    Consumable, // potions, buff scrolls
 }

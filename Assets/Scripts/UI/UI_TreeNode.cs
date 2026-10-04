@@ -12,8 +12,8 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [Header("Unlock details")]
     public UI_TreeNode[] neededNodes;
     public UI_TreeNode[] conflictNodes;
-    public bool isUnlocked;
-    public bool isLocked;
+    public bool isUnlocked;     // 是否花费技能点解锁
+    public bool isLocked;       // 是否冲突锁定
 
     [Header("Skill details")]
     public SkillData skillData;
@@ -43,6 +43,11 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void Refund()
     {
+        if (isUnlocked == false || skillData.unlockedByDefault)
+        {
+            return;
+        }
+
         isUnlocked = false;
         isLocked = false;
         UpdateIconColor(GetColorByHex(lockedColorHex));
