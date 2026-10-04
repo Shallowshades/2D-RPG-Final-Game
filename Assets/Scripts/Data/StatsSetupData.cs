@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "RPG Setup/Stats Setup", fileName = "Default Stats Setup")]
+[CreateAssetMenu(menuName = "RPG Setup/Default Stats Setup", fileName = "Default Stats Setup")]
 public class StatsSetupData : ScriptableObject
 {
     [Header("Resources")]
