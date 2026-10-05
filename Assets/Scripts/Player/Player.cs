@@ -171,10 +171,11 @@ public class Player : Entity
         input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
 
-        input.Player.SkillTreeBoard.performed += ctx => ui.ToggleSkillTreeUI();
-        input.Player.Inventory.performed += ctx => ui.ToggleInventoryUI();
         input.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
         input.Player.Spell.performed += ctx => skillManager.timeEcho.TryUseSkill();
+
+        input.Player.SkillTreeBoard.performed += ctx => ui.ToggleSkillTreeUI();
+        input.Player.Inventory.performed += ctx => ui.ToggleInventoryUI();
     }
 
     private void OnDisable()

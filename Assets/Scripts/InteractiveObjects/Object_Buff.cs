@@ -1,23 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-[System.Serializable]
-public class Buff
-{
-    public StatsType type;
-    public float value;
-}
-
 public class Object_Buff : MonoBehaviour
 {
-    private SpriteRenderer spriteRender;
-    private Entity_Stats statsToModify;
+    private Player_Stats statsToModify;
 
     [Header("Buff details")]
-    [SerializeField] private Buff[] buffs;
+    [SerializeField] private BuffEffectData[] buffs;
     [SerializeField] private string buffName;
     [SerializeField] private float buffDuration = 20;
-    [SerializeField] private bool canBeUsed = true;
 
     [Header("Floaty movement")]
     [SerializeField] private float floatSpeed = 1.0f;
@@ -26,8 +17,6 @@ public class Object_Buff : MonoBehaviour
 
     private void Awake()
     {
-        spriteRender = GetComponentInChildren<SpriteRenderer>();
-
         startPosition = transform.position;
     }
 
@@ -38,34 +27,14 @@ public class Object_Buff : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (canBeUsed == false) return;
+    { 
+        statsToModify = collision.GetComponent<Player_Stats>();
+        if (statsToModify == null) return;
 
-        statsToModify = collision.GetComponent<Entity_Stats>();
-        StartCoroutine(BuffCoroutine(buffDuration));
-    }
-
-    private IEnumerator BuffCoroutine(float duration)
-    {
-        canBeUsed = false;
-        spriteRender.color = Color.clear;
-        
-        ApplyBuff(true);
-
-        yield return new WaitForSeconds(duration);
-
-        ApplyBuff(false);
-
-        Destroy(gameObject);
-    }
-
-    private void ApplyBuff(bool enable)
-    {
-        if (enable == false) return;
-        foreach (var buff in buffs)
+        if (statsToModify.CanApplyBuffOf(buffName))
         {
-            statsToModify.GetStatsByType(buff.type).AddModifier(buff.value, buffName);
+            statsToModify.ApplyBuff(buffs, buffDuration, buffName);
+            Destroy(gameObject);
         }
     }
-
 }

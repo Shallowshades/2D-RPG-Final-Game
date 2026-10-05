@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Inventory_Player : Inventory_Base
 {
-    private Entity_Stats playerStats;
+    private Player player;
     public List<Inventory_EquipmentSlot> equipList;
 
     protected override void Awake()
     {
         base.Awake();
-        playerStats = GetComponent<Entity_Stats>();
+        player = GetComponent<Player>();
     }
 
     public void TryEquipItem(Inventory_Item item)
@@ -37,13 +37,16 @@ public class Inventory_Player : Inventory_Base
 
     private void EquipItem(Inventory_Item item, Inventory_EquipmentSlot slot)
     {
-        slot.equippedItem = item;
-        slot.equippedItem.AddModifiers(playerStats);
+        float savedHealthPercent = player.health.GetHealthPercent();
 
+        slot.equippedItem = item;
+        slot.equippedItem.AddModifiers(player.stats);
+        
+        player.health.SetHealthToPercent(savedHealthPercent);
         RemoveItem(item);
     }
 
-    public void UnequipItem(Inventory_Item item)
+    public void UnequipItem(Inventory_Item itemToUnequip)
     {
         if (CanAddItem() == false)
         {
@@ -51,16 +54,17 @@ public class Inventory_Player : Inventory_Base
             return;
         }
 
-        foreach (var slot in equipList)
+        float savedHealthPercent = player.health.GetHealthPercent();
+        
+        var slotToUnequip = equipList.Find(slot => slot.equippedItem == itemToUnequip);
+        if (slotToUnequip != null)
         {
-            if (slot.equippedItem == item)
-            {
-                slot.equippedItem = null;
-                break;
-            }
+            slotToUnequip.equippedItem = null;
         }
 
-        item.RemoveModifiers(playerStats);
-        AddItem(item);
+        itemToUnequip.RemoveModifiers(player.stats);
+
+        player.health.SetHealthToPercent(savedHealthPercent);
+        AddItem(itemToUnequip);
     }
 }

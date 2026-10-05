@@ -77,4 +77,6 @@ public class Inventory_Base : MonoBehaviour
     {
         return itemList.Find(item => item.itemData == itemData && item.CanAddStack());
     }
+
+    public void TriggerUpdateUI() => onInventoryChange?.Invoke();
 }
