@@ -35,15 +35,16 @@ public class Inventory_Player : Inventory_Base
         EquipItem(inventoryItem, slotToReplace);
     }
 
-    private void EquipItem(Inventory_Item item, Inventory_EquipmentSlot slot)
+    private void EquipItem(Inventory_Item itemToEquip, Inventory_EquipmentSlot slot)
     {
         float savedHealthPercent = player.health.GetHealthPercent();
 
-        slot.equippedItem = item;
+        slot.equippedItem = itemToEquip;
         slot.equippedItem.AddModifiers(player.stats);
+        slot.equippedItem.AddItemEffect(player);
         
         player.health.SetHealthToPercent(savedHealthPercent);
-        RemoveItem(item);
+        RemoveItem(itemToEquip);
     }
 
     public void UnequipItem(Inventory_Item itemToUnequip)
@@ -63,6 +64,7 @@ public class Inventory_Player : Inventory_Base
         }
 
         itemToUnequip.RemoveModifiers(player.stats);
+        itemToUnequip.RemoveItemEffect();
 
         player.health.SetHealthToPercent(savedHealthPercent);
         AddItem(itemToUnequip);

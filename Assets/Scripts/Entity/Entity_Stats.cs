@@ -186,7 +186,7 @@ public class Entity_Stats : MonoBehaviour
             case StatsType.LightningResistance: return defense.iceResistance;
 
             default:
-                Debug.LogWarning($"StatsType {type} not implemented yet.");
+                // Debug.LogWarning($"StatsType {type} not implemented yet.");
                 return null;
         }
     }
