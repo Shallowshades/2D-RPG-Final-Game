@@ -44,7 +44,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
         return childrenToReturn.ToArray();
     }
 
-    private void UpdateConnections()
+    private void UpdateConnections(bool reorderSiblings = true)
     {
         for (int i = 0; i < connectionDetails.Length; ++i)
         {
@@ -60,7 +60,12 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
             detail.childNode?.SetPosition(targetPosition);
             detail.childNode?.SetConnectionImage(connectionImage);
-            detail.childNode?.transform.SetAsLastSibling();
+            // 改层级顺序会触发 OnTransformChildrenChanged(SendMessage),
+            // 而 OnValidate 期间禁止 SendMessage, 故校验时跳过, 交给运行时 Start
+            if (reorderSiblings)
+            {
+                detail.childNode?.transform.SetAsLastSibling();
+            }
         }
     }
 
@@ -89,7 +94,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
     private void OnValidate()
     {
-        if (connectionDetails.Length <= 0) return;
+        if (connectionDetails == null || connectionDetails.Length <= 0) return;
 
         if (connectionDetails.Length != connections.Length)
         {
@@ -97,6 +102,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
             return;
         }
 
-        UpdateConnections();
+        // 只预览位置与连线, 不改层级结构(OnValidate 期间禁止 SendMessage)
+        UpdateConnections(reorderSiblings: false);
     }
 }
