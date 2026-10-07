@@ -13635,7 +13635,7 @@ GameObject:
   - component: {fileID: 841476187}
   - component: {fileID: 841476186}
   m_Layer: 9
-  m_Name: Object_ItemPickup - Book Of Knowledage
+  m_Name: Object_ItemPickup - Dracula's Fang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13731,7 +13731,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1597076740, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: 1452725533, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13754,7 +13754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6ca1f43838bd24bac8a65857a2d728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 70cc31680a158c84a83c0b8a899f0000, type: 2}
+  itemData: {fileID: 11400000, guid: 5dd9fad057692eb438342532b77ff200, type: 2}
 --- !u!4 &841476189
 Transform:
   m_ObjectHideFlags: 0
@@ -13764,7 +13764,7 @@ Transform:
   m_GameObject: {fileID: 841476185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.18, y: -6.3, z: 0}
+  m_LocalPosition: {x: 8.19, y: -9.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15515,7 +15515,7 @@ GameObject:
   - component: {fileID: 951363615}
   - component: {fileID: 951363614}
   m_Layer: 9
-  m_Name: Object_ItemPickup - Scroll of Vengeance
+  m_Name: Object_ItemPickup - Thunder Claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15611,7 +15611,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -382652656, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  m_Sprite: {fileID: 1871054646, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15634,7 +15634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6ca1f43838bd24bac8a65857a2d728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 6c2fca6a41890ff4caba05c06d11f696, type: 2}
+  itemData: {fileID: 11400000, guid: a51be4894cca098468fb26fd7f4a8956, type: 2}
 --- !u!4 &951363617
 Transform:
   m_ObjectHideFlags: 0
@@ -15644,7 +15644,7 @@ Transform:
   m_GameObject: {fileID: 951363613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: -6.32, z: 0}
+  m_LocalPosition: {x: -1.51, y: -7.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41929,7 +41929,7 @@ MonoBehaviour:
   currentHealth: 0
   canTakeDamage: 1
   regenInterval: 1
-  canRegenerateHealth: 0
+  canRegenerateHealth: 1
   knockbackPower: {x: 1.5, y: 2.5}
   heavyKnockbackPower: {x: 7, y: 7}
   knockbackDuration: 0.2

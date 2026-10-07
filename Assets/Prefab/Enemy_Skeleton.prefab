@@ -980,16 +980,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
+  basicAttackScale:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   targetCheck: {fileID: 6244261708969856596}
   targetCheckRadius: 1
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
-  defaultDuration: 3
-  chillSlowMultiplier: 0.4
-  electrifyChargeBuildUp: 0.4
-  fireScale: 0.8
-  lightningScale: 2.5
 --- !u!114 &1572957183038350380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  isDead: 0
+  canTakeDamage: 1
   regenInterval: 1
   canRegenerateHealth: 1
   knockbackPower: {x: 1.5, y: 2.5}
@@ -1030,7 +1035,7 @@ MonoBehaviour:
   critHitVFX: {fileID: 3252335451285526593, guid: 60b4fccf5fbb56f458764ad96433f1cc, type: 3}
   chillVfx: {r: 0.42352942, g: 0.69803923, b: 1, a: 1}
   burnVfx: {r: 1, g: 0.32156864, b: 0, a: 1}
-  electrifyVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  shockVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   attackAlert: {fileID: 1329594940861159936}
 --- !u!114 &1067334636354809283
 MonoBehaviour:
@@ -1047,7 +1052,7 @@ MonoBehaviour:
   defaultStatsSetup: {fileID: 11400000, guid: 6b1aa40d65447d84aab63d469d7beda8, type: 2}
   resources:
     maxHealth:
-      baseValue: 10000
+      baseValue: 1500
       modifiers: []
     healthRegen:
       baseValue: 0
@@ -1070,7 +1075,7 @@ MonoBehaviour:
       baseValue: 1
       modifiers: []
     damage:
-      baseValue: 100
+      baseValue: 40
       modifiers: []
     critPower:
       baseValue: 100

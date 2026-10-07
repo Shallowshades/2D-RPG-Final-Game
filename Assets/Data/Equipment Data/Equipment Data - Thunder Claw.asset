@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9a6edf9d3da5a40b77fdec64585b15, type: 3}
+  m_Name: Equipment Data - Thunder Claw
+  m_EditorClassIdentifier: 
+  itemName: Thunder Claw
+  itemIcon: {fileID: 1871054646, guid: c04113aa642e31a48861eb4aebb0b759, type: 3}
+  itemType: 1
+  maxStackSize: 1
+  itemEffect: {fileID: 11400000, guid: f2743edbb4a7eb947ae3f5075ffce0ad, type: 2}
+  modifiers:
+  - statsType: 6
+    value: 0.2
+  - statsType: 13
+    value: 40
+  - statsType: 7
+    value: 40
+  - statsType: 1
+    value: 5
