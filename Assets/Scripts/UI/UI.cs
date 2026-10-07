@@ -26,6 +26,9 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
+        // 先补齐"默认解锁"的技能(必须在关闭面板之前执行, 此时所有 Awake 都已跑完)
+        skillTree.UnlockDefaultNodes();
+
         // 初始可见性由代码统一决定(必须放在 Start: 此时所有 Awake 都已执行完)
         skillTree.gameObject.SetActive(startWithSkillTreeOpen);
         inventory.gameObject.SetActive(startWithCharacterOpen);

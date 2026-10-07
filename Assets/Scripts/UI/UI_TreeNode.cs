@@ -25,20 +25,37 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Awake()
     {
-        ui = GetComponentInParent<UI>();
-        rect = GetComponent<RectTransform>();
-        skillTree = GetComponentInParent<UI_SkillTree>();
-        connectHandler = GetComponent<UI_TreeConnectionHandler>();
-
+        CacheReferences();
         UpdateIconColor(GetColorByHex(lockedColorHex));
+    }
+
+    /// <summary>
+    /// 缓存引用。做成幂等, 以便在 Awake 还没执行过时(例如面板一度处于未激活状态)
+    /// 也能从外部安全地调用解锁逻辑
+    /// </summary>
+    private void CacheReferences()
+    {
+        if (ui == null) ui = GetComponentInParent<UI>();
+        if (rect == null) rect = GetComponent<RectTransform>();
+        if (skillTree == null) skillTree = GetComponentInParent<UI_SkillTree>();
+        if (connectHandler == null) connectHandler = GetComponent<UI_TreeConnectionHandler>();
     }
 
     private void Start()
     {
-        if (skillData.unlockedByDefault)
-        {
-            Unlock();
-        }
+        // 面板被激活时也会走到这里, 作为 UnlockDefaultNodes 的兜底(Unlock 是幂等的)
+        UnlockIfDefault();
+    }
+
+    /// <summary>
+    /// 若该节点配置为"默认解锁", 则执行解锁。幂等, 可重复调用
+    /// </summary>
+    public void UnlockIfDefault()
+    {
+        if (skillData == null || skillData.unlockedByDefault == false) return;
+
+        CacheReferences();
+        Unlock();
     }
 
     public void Refund()
@@ -61,12 +78,14 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Unlock()
     {
+        if (isUnlocked) return;      // 幂等: 默认解锁与手动解锁重复调用时不要重复扣技能点
+
         isUnlocked = true;
         UpdateIconColor(Color.white);
         LockConflictNodes();
 
         skillTree.RemoveSkillPoints(skillData.cost);
-        connectHandler.UnlockConnectionImage(true);
+        connectHandler?.UnlockConnectionImage(true);
 
         skillTree.skillManager.GetSkillByType(skillData.skillType).SetSkillUpgrade(skillData.upgradeData);
     }
@@ -101,7 +120,11 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void LockChildNodes()
     {
+        CacheReferences();
+
         isLocked = true;
+
+        if (connectHandler == null) return;      // 没有连接组件的节点就没有子节点
 
         foreach(var node in connectHandler.GetChildNodes())
         {
