@@ -14,58 +14,107 @@ public class Inventory_Base : MonoBehaviour
 
     }
 
-    public void TryUseItem(Inventory_Item itemToUse)
+    /// <summary>
+    /// 使用消耗品: 执行物品效果并扣除一个堆叠
+    /// </summary>
+    /// <returns>true = 成功使用; false = 物品不在背包 / 没有可执行效果</returns>
+    public bool TryUseItem(Inventory_Item itemToUse)
     {
         Inventory_Item consumable = itemList.Find(item => item == itemToUse);
 
         if (consumable == null)
         {
-            return;
+            Debug.LogWarning("[Inventory] 该物品不在背包中, 无法使用");
+            return false;
+        }
+
+        if (consumable.itemEffect == null)
+        {
+            Debug.LogWarning($"[Inventory] {consumable.itemData.itemName} 没有可执行的效果");
+            return false;
         }
 
         consumable.itemEffect.ExecuteEffect();
-        
-        if (consumable.stackSize > 1)
+
+        // 最后一件: 整条移除(成功时由 RemoveItem 负责通知 UI)
+        if (consumable.stackSize <= 1)
         {
-            consumable.RemoveStack();
+            return RemoveItem(consumable);
         }
-        else
-        {
-            RemoveItem(consumable);
-        }
-        onInventoryChange?.Invoke();
+
+        consumable.RemoveStack();
+        RaiseInventoryChanged();
+        return true;
     }
 
-    public bool CanAddItem()
+    /// <summary>
+    /// 只读查询: 这件物品能否放入背包(能叠到同类堆叠上, 或还有空格子)
+    /// 注意: 写路径请直接调用 AddItem, 不要写成"先查后加"
+    /// </summary>
+    public bool CanAddItem(ItemData itemData)
     {
-        if (itemList.Count < maxInventorySize) return true;
+        if (itemData == null) return false;
 
-        foreach (var item in itemList)
-        {
-            if (item.CanAddStack()) return true;
-        }
+        // 1) 能叠到已有的同类未满堆叠上 → 不需要新格子
+        if (FindItemCanStack(itemData) != null) return true;
 
-        return false;
+        // 2) 否则需要一个空格子
+        return itemList.Count < maxInventorySize;
     }
 
-    public void AddItem(Inventory_Item item)
+    /// <summary>
+    /// 唯一添加入口: 内部先做容量检测, 失败时不改动数据也不通知 UI
+    /// </summary>
+    /// <returns>true = 成功加入; false = 背包已满或物品非法</returns>
+    public bool AddItem(Inventory_Item item)
     {
-        Inventory_Item itemInInventory = FindItemCanStack(item.itemData);
-        if (itemInInventory != null)
+        if (item == null || item.itemData == null)
         {
-            itemInInventory.AddStack();
+            Debug.LogWarning("[Inventory] AddItem 收到非法物品, 加入失败");
+            return false;
+        }
+
+        if (CanAddItem(item.itemData) == false)
+        {
+            Debug.LogWarning($"[Inventory] 背包已满, 无法加入 {item.itemData.itemName} " +
+                             $"({itemList.Count}/{maxInventorySize})");
+            return false;
+        }
+
+        Inventory_Item stackTarget = FindItemCanStack(item.itemData);
+        if (stackTarget != null)
+        {
+            stackTarget.AddStack();
         }
         else
         {
             itemList.Add(item);
         }
-        onInventoryChange?.Invoke();
+
+        RaiseInventoryChanged();
+        return true;
     }
 
-    public void RemoveItem(Inventory_Item item)
+    /// <summary>
+    /// 只读查询: 该实例是否真的在背包里
+    /// </summary>
+    public bool CanRemoveItem(Inventory_Item item) => item != null && itemList.Contains(item);
+
+    /// <summary>
+    /// 唯一移除入口: 内部先做存在性检测, 失败时不改动数据也不通知 UI
+    /// </summary>
+    /// <returns>true = 成功移除; false = 该实例不在背包中</returns>
+    public bool RemoveItem(Inventory_Item item)
     {
-        itemList.Remove(FindItem(item.itemData));
-        onInventoryChange?.Invoke();
+        if (CanRemoveItem(item) == false)
+        {
+            Debug.LogWarning("[Inventory] 该物品不在背包中, 移除失败");
+            return false;
+        }
+
+        itemList.Remove(item);      // 按实例移除, 避免误删同 itemData 的另一条堆叠
+        RaiseInventoryChanged();
+        return true;
     }
 
     public Inventory_Item FindItem(ItemData itemData)
@@ -78,5 +127,10 @@ public class Inventory_Base : MonoBehaviour
         return itemList.Find(item => item.itemData == itemData && item.CanAddStack());
     }
 
-    public void TriggerUpdateUI() => onInventoryChange?.Invoke();
+    public void TriggerUpdateUI() => RaiseInventoryChanged();
+
+    /// <summary>
+    /// 只在数据真的发生变化时调用, 避免失败路径白刷 UI
+    /// </summary>
+    protected void RaiseInventoryChanged() => onInventoryChange?.Invoke();
 }

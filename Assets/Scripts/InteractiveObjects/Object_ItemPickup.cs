@@ -29,9 +29,12 @@ public class Object_ItemPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         inventory = collision.GetComponent<Inventory_Base>();
-        if (inventory != null && inventory.CanAddItem())
+
+        if (inventory == null) return;
+
+        // AddItem 内部已做容量检测; 失败时物品留在地上, 等背包有空位再来捡
+        if (inventory.AddItem(itemToAdd))
         {
-            inventory.AddItem(itemToAdd);
             Destroy(gameObject);
         }
     }
