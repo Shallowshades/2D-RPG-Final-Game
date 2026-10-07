@@ -53,7 +53,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         UpdateIconColor(GetColorByHex(lockedColorHex));
 
         skillTree.AddSkillPoints(skillData.cost);
-        connectHandler.UnlockConnectionImage(false);
+        connectHandler?.UnlockConnectionImage(false);
 
         // skill manager and reset skill
 

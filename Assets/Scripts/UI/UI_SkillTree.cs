@@ -19,7 +19,7 @@ public class UI_SkillTree : MonoBehaviour
     [ContextMenu("Reset Skill Tree")]
     public void RefundAllSkills()
     {
-        UI_TreeNode[] skillNodes = GetComponentsInChildren<UI_TreeNode>();
+        UI_TreeNode[] skillNodes = GetComponentsInChildren<UI_TreeNode>(true);
 
         foreach(var node in skillNodes)
         {

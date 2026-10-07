@@ -23,6 +23,13 @@ public class UI_StatsSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         ui = GetComponentInParent<UI>();
         rect = GetComponent<RectTransform>();
         playerStats = FindFirstObjectByType<Player_Stats>();
+
+        // 名字之前只在 OnValidate 里写过(那只在编辑器校验时执行),
+        // 运行时不会刷新 -> 这里补一次, 否则每行都停留在占位文本
+        if (statsName != null)
+        {
+            statsName.text = GetStatsNameByType(statsSlotType);
+        }
     }
 
     public void UpdateStatsValue()
